@@ -3,6 +3,7 @@ import os
 
 from file_manager import FileManager
 from openai_requests.create_similar_file import CreateSimilarFile
+from openai_requests.create_tests import CreateTests
 from openai_api import OpenAIAPI
 
 def main():
@@ -35,7 +36,13 @@ def main():
         fm.write_file(output_file_path, output_file_content)
 
     elif args.action.lower() == 'tests' or args.action.lower() == 't':
-        filecontent = fm.read_file(args.filepath)
+        create_tests = CreateTests(openai_api)
+
+        input_file_path = args.filepath
+        input_file_content = fm.read_file(input_file_path)
+        output_file_path = args.description
+        output_file_content = create_tests.request(input_file_content)
+        fm.write_file(output_file_path, output_file_content)
 
     else:
         print(f'Error: Unknown action "{args.action}". Options are "similar(s)" or "tests(t)".')
