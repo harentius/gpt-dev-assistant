@@ -38,7 +38,7 @@ def main():
         filecontent = fm.read_file(args.filepath)
 
     else:
-        print(f'Error: Unknown action "{args.action}". Options are "similar" or "tests".')
+        print(f'Error: Unknown action "{args.action}". Options are "similar(s)" or "tests(t)".')
 
 if __name__ == "__main__":
     main()
