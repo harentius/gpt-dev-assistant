@@ -9,7 +9,7 @@ class CreateTests:
     def request(self, file_content):
         messages = [
             {"role": "user", "content":  "I have file: \n" + file_content},
-            {"role": "user", "content":  "Write tests for it. Use only PHPUnit mocks, no mockery. Cover as many scenarios as it is meaningful"},
+            {"role": "user", "content":  "Write tests for it. Use only PHPUnit mocks, no mockery. Cover as many scenarios as possible, to cover all possible use cases."},
         ]
 
         return self.api_client.request_only_source_code(messages)
